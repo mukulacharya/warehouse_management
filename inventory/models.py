@@ -30,6 +30,9 @@ class Inventory(BaseModel):
     status = models.SmallIntegerField(choices=STATUS_CHOICES, default=UNAVAILABLE)
     stock_type = models.SmallIntegerField(choices=stock_type_choices, default=B2C)
 
+    class Meta:
+        verbose_name_plural = 'Inventory'
+
 
 class InventoryReservation(BaseModel):
     RESERVED = 1
@@ -46,6 +49,9 @@ class InventoryReservation(BaseModel):
     quantity = models.DecimalField(decimal_places=2, default=0, max_digits=13)
     expiry_date = models.DateTimeField(null=True, blank=True, db_index=True)
     status = models.SmallIntegerField(choices=status_choices)
+
+    class Meta:
+        verbose_name_plural = 'Inventory Reservations'
 
 
 class EntityRelations(BaseModel):
